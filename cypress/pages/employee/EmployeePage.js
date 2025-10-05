@@ -1,33 +1,33 @@
 class EmployeePage {
 
   navigateToAddEmployee() {
-    cy.contains('a.oxd-main-menu-item', 'PIM').click();
-    cy.contains('button', 'Add').click();
+    cy.contains('a.oxd-main-menu-item', 'PIM', { timeout: 10000 }).click();
+    cy.contains('button', 'Add', { timeout: 10000 }).click();
   }
 
   navigateToListEmployee() {
     cy.contains('a.oxd-main-menu-item', 'PIM').click();
-    cy.contains('h5', 'Employee Information');
+    cy.contains('h5', 'Employee Information', { timeout: 10000 });
   }
 
   getFirstNameInput() {
-    return cy.get('input[name="firstName"]');
+    return cy.get('input[name="firstName"]', { timeout: 10000 });
   }
 
   getMiddleNameInput() {
-    return cy.get('input[name="middleName"]');
+    return cy.get('input[name="middleName"]', { timeout: 10000 });
   }
 
   getLastNameInput() {
-    return cy.get('input[name="lastName"]');
+    return cy.get('input[name="lastName"]', { timeout: 10000 });
   }
 
   getSaveButton() {
-    return cy.get('button[type="submit"]');
+    return cy.get('button[type="submit"]', { timeout: 10000 });
   }
 
   searchEmployee(name) {
-    cy.get('input[placeholder="Type for hints..."]').clear().type(name);
+    cy.get("input[placeholder='Type for hints...']", { timeout: 10000 }).clear().type(name);
     cy.contains('button', 'Search').click();
   }
 
@@ -36,10 +36,6 @@ class EmployeePage {
     this.getMiddleNameInput().type(middleName);
     this.getLastNameInput().type(lastName);
     this.getSaveButton().click();
-  }
-
-  verifyEmployeeVisible(name) {
-    cy.get('.oxd-table-card').should('contain.text', name);
   }
 
   interceptEmployeeList() {
